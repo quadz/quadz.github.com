@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html manifest='manifest.appcache'>
+  <head>
+    <title>Quadz</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="viewport" content="width=device-width,user-scalable=no,target-densitydpi=device-dpi,initial-scale=1.0,maximum-scale=1.0"/>
+    <link rel="apple-touch-icon"
+          href="images/quadz72.png" />
+    <link rel="apple-touch-icon-precomposed"
+          href="images/quadz72.png" />
+
+    <link rel="stylesheet" type="text/css" href="default.css" />
+
+    <script src="modernizr.touch.js"></script>
+    <script src="json2.js"></script>
+    <script src="jquery.js"></script>
+    <script src="jquery.animate-enhanced.js"></script>
+    <script src="jquery.rotate.js"></script>
+    <script src="board.js"></script>
+  </head>
+  <body>
+
+      <div id="levelHintContainer" class="hint levelHint">
+        <div class="hint-text"></div>
+      </div>
+
+      <div class="hint" id="hintLeft">
+        <table cellspacing="0" cellpadding="0">
+          <tr>
+            <td><div class="arrow-left"></div></td>
+            <td><div class="hint-text"></div></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="hint" id="hintTop">
+        <table cellspacing="0" cellpadding="0">
+          <tr>
+            <td><div class="hint-text"></div></td>
+          </tr>
+          <tr>
+            <td><div align="center"><div class="arrow-down"></div><div></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="hint" id="hintRight">
+        <table cellspacing="0" cellpadding="0">
+          <tr>
+            <td><div class="hint-text"></div></td>
+            <td><div class="arrow-right"></div></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="hint" id="hintBottom">
+        <table cellspacing="0" cellpadding="0">
+          <tr>
+            <td><div align="center"><div class="arrow-up"></div><div></td>
+          </tr>
+          <tr>
+            <td><div class="hint-text"></div></td>
+          </tr>
+        </table>
+      </div>
+
+
+    <table id="boardContainer">
+      <tr>
+        <td>
+          <table id="board" class="center" cellspacing="0">
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <div id="transparentOverlay">
+    </div>
+
+    <table id="overlay" cellpadding="0" cellspacing="0">
+      <tr>
+        <td id="overlayContent">
+
+          <div id="confirmResetContainer" class="overlayWidget" align="center">
+            <table id="confirmReset">
+              <tr>
+                <td colspan="2">
+                  Are you sure you would like to reset this level?
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div id="confirmResetYes" class="toolButton">Yes</div>
+                </td>
+                <td>
+                  <div id="confirmResetNo" class="toolButton">No</div>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div id="rulesContainer" class="overlayWidget">
+
+            <div class="toolButton closeButton">
+              <div class="closeButton-content"></div>
+            </div>
+
+            <div id="rules">
+
+              <h1 id="rulesAppName">Quadz</h1>
+
+              <div align="center">
+                by Igor Tkach <br/>
+                <a href="mailto:quadz@8x.to">quadz@8x.to</a>
+              </div>
+
+              <div id="rulesNagContainer" align="center">
+                <br/>
+                <a id="rulesNag" target="_blank"></a>
+                <br/>
+              </div>
+
+              <hr/>
+              <p>
+                The goal is to clear the field. Shoot quadz from
+                repositories around the field to form groups of 3 or
+                more quadz of the same color which then
+                disappear. Only quadz that are at the edge of a
+                repository and have an obstacle (another quad) to hit
+                can move into the field. Quadz continue to move in the
+                same direction when their obstacle is removed in the
+                order they entered the field.
+              </p>
+
+              <p>
+                You can undo <em>one</em> move. You can discard board
+                state and start over (reset level).
+              </p>
+
+              <p>
+                Some levels have a level word. This means that some
+                quadz carry letters of that word. Quadz with letters
+                must be killed in a particular sequence to spell level
+                word (displayed at the top right). If field is cleared
+                before word is complete you fail.
+              </p>
+
+              <p>
+                Killing a group of 4 quadz adds one of the
+                remaining letters to a quad off of the field, or, if
+                the word is complete, turns it into a wildcard
+                quad that can be used in place of any color.
+              </p>
+
+              <p>
+                Killing a group of 5 quadz adds a wildcard letter
+                <span class="kbd">*</span> to a quad off of the
+                field. Once the word is complete, all remaining
+                wildcard letters become wildcard quadz. Killing a
+                group of 5 after word is complete (or if level has no
+                word) adds a wildcard quad in a shooting position.
+              </p>
+
+              <p>
+                Killing more than one group of quadz with one shot
+                turns a quad in a shooting position into a
+                bomb. Killing 2 quad groups yields one bomb, 3 - two
+                bombs, etc. Bomb is a special quad that kills
+                everything around (including rocks) when it stops at
+                an obstacle. Using a bomb results in penalty,  1
+                point per quad killed.
+              </p>
+
+              <p>
+                Bombs may appear in initial level
+                layout. They detonate if hit by another quad.
+              </p>
+
+              <p>
+                Rock is a special quad that may only appear on the
+                field in initial level layout. Rocks can only be
+                removed with a bomb. It is not necessary to remove
+                rocks to clear the field.
+              </p>
+
+              <p>
+                Color changer is a special field cell. Any reqular
+                quad that moves through a color changer cell changes
+                it's color to a random different one. This doesn't
+                affect bombs and wildcards.
+              </p>
+
+              <p>
+                Redirectors are special field cells. Any quad
+                that moves through a redirector changes
+                it's direction to one indicated by the cell.
+              </p>
+
+              <p>
+                All unused bombs and wildcards earn extra bonus points
+                when field is cleared.
+              </p>
+
+              <p>
+                Good luck!
+              </p>
+
+              <div id="keyboardShortcutsInfo">
+              <h2>Keyboard Shortcuts</h2>
+              <hr/>
+
+              <table>
+                <tr>
+                  <td class="kbd">Backspace</td>
+                  <td>Undo move</td>
+                </tr>
+                <tr>
+                  <td class="kbd">Shift+r</td>
+                  <td>Reset level</td>
+                </tr>
+                <tr>
+                  <td class="kbd">n</td>
+                  <td>Next level</td>
+                </tr>
+                <tr>
+                  <td class="kbd">p</td>
+                  <td>Previous level</td>
+                </tr>
+                <tr>
+                  <td class="kbd">l</td>
+                  <td>Open level selector</td>
+                </tr>
+                <tr>
+                  <td class="kbd">Left</td>
+                  <td>Previous levels page</td>
+                </tr>
+                <tr>
+                  <td class="kbd">Right</td>
+                  <td>Next levels page</td>
+                </tr>
+                <tr>
+                  <td class="kbd">Esc</td>
+                  <td>Close help or level selector</td>
+                </tr>
+                <tr>
+                  <td><span class="kbd">h</span>, <span class="kbd">?</span></td>
+                  <td>Help</td>
+                </tr>
+              </table>
+              </div>
+
+              <h2>About</h2>
+              <hr/>
+              <p>
+                <em>Quadz</em> has been created by Igor Tkach. Write
+                to <a href="mailto:quadz@8x.to">quadz@8x.to</a> for any
+                questions or to report a problem.
+
+                This program uses the following libraries:
+                <ul>
+                  <li> <a href="http://baagoe.org/en/wiki/Better_random_numbers_for_javascript"
+                          target="_blank"><em>Alea</em> random number generator</a></li>
+                  <li> <a href="http://jquery.com" target="_blank">jQuery</a></li>
+                  <li> <a href="http://playground.benbarnett.net/jquery-animate-enhanced/"
+                          target="_blank">jquery.animate-enhanced</a></li>
+                  <li> <a href="http://code.google.com/p/jqueryrotate/"
+                          target="_blank">jquery.rotate</a></li>
+                  <li> <a href="http://modernizr.com" target="_blank">Modernizr</a></li>
+                  <li> <a href="https://github.com/douglascrockford/JSON-js" target="_blank">json2</a></li>
+                </ul>
+
+              </p>
+
+            </div>
+          </div>
+
+          <table id="levelsContainer" class="overlayWidget">
+
+            <tr>
+              <td>
+                <div id="btnScrollLevelsLeft" class="toolButton boardButton"></div>
+              </td>
+
+              <td>
+                <div id="levels">
+                  <div class="toolButton closeButton">
+                    <div class="closeButton-content"></div>
+                  </div>
+                  <table id="selectLevelWidget" cellspacing="0">
+
+                    <tr>
+                      <td id="thumbHolder1" class="thumbHolder"></td>
+                      <td id="thumbHolder2" class="thumbHolder"></td>
+                      <td id="thumbHolder3" class="thumbHolder"></td>
+                    </tr>
+
+
+                    <tr>
+                      <td id="thumbHolder4" class="thumbHolder"></td>
+                      <td id="thumbHolder5" class="thumbHolder"></td>
+                      <td id="thumbHolder6" class="thumbHolder"></td>
+                    </tr>
+
+                    <tr>
+                      <td id="thumbHolder7" class="thumbHolder"></td>
+                      <td id="thumbHolder8" class="thumbHolder"></td>
+                      <td id="thumbHolder9" class="thumbHolder"></td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="3">
+                        <div id="pagePositionContainer" align="center">
+                        </div>
+                      </td>
+                    </tr>
+
+                  </table>
+                </div>
+              </td>
+
+              <td>
+                <div id="btnScrollLevelsRight" class="toolButton boardButton"></div>
+              </td>
+            </tr>
+
+          </table>
+
+        </td>
+      </tr>
+    </table>
+
+    <div id="topContainer" class="center" align="center">
+
+      <div id="scoreContainer" class="center" align="center">
+        <span id="score" title="Score"></span>
+        <div id="wordContainer" class="center" align="center">
+          <span id="word" titel="Level word"></span>
+        </div>
+      </div>
+
+      <div id="levelLabelContainer" class="center" align="center">
+        <div id="selectLevel" class="toolButton boardButton">
+          <div id="levelLabel" class="center" align="center"></div>
+        </div>
+      </div>
+
+      <div id="showInfoContainer" class="center" align="center">
+          <div id="showHowToPlay" class="toolButton boardButton"></div>
+      </div>
+
+      <div id="undoButtonContainer" class="center" align="center">
+        <div id="undoMove" class="toolButton boardButton accel"></div>
+        <div id="resetLevel" class="toolButton boardButton accel"></div>
+      </div>
+
+    </div>
+
+    <div class="hint updateHintPos uiHint" id="hintUndoButton">
+      <table cellspacing="0" cellpadding="0">
+        <tr>
+          <td><div class="hint-text">Undo/Reset</div></td>
+        </tr>
+        <tr>
+          <td><div align="center"><div class="arrow-down"></div><div></td>
+        </tr>
+      </table>
+    </div>
+
+
+    <div class="hint updateHintPos uiHint" id="hintLevelButton">
+      <table cellspacing="0" cellpadding="0">
+          <tr>
+            <td><div align="center"><div class="arrow-up"></div><div></td>
+          </tr>
+          <tr>
+            <td><div class="hint-text">Select level</div></td>
+          </tr>
+      </table>
+    </div>
+
+
+    <div class="hint updateHintPos uiHint" id="hintShowInfo">
+      <table cellspacing="0" cellpadding="0">
+        <tr>
+          <td><div class="hint-text">Help</div></td>
+        </tr>
+        <tr>
+          <td><div align="center"><div class="arrow-down"></div><div></td>
+        </tr>
+      </table>
+    </div>
+
+
+    <div class="hint updateHintPos uiHint" id="hintScore">
+      <table cellspacing="0" cellpadding="0">
+          <tr>
+            <td><div class="hint-text">Score</div></td>
+          </tr>
+          <tr>
+            <td><div align="center"><div class="arrow-down"></div><div></td>
+          </tr>
+      </table>
+    </div>
+
+    <table id="nagContainer">
+      <tr>
+        <td>
+            <span id="nagText">
+            </span>
+        </td>
+      </tr>
+    </table>
+
+  </body>
+</html>
