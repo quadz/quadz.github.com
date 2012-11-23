@@ -1,7 +1,7 @@
 CACHE MANIFEST
 
 CACHE:
-#Build time: 1353610333
+#Build time: 1353685710
 
 board.js
 default24.css
@@ -172,7 +172,6 @@ images/quadz72.png
 jquery.animate-enhanced.js
 jquery.js
 jquery.rotate.js
-json2.js
 levels.json
 manifest.appcache
 modernizr.touch.js
