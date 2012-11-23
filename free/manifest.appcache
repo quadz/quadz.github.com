@@ -1,7 +1,7 @@
 CACHE MANIFEST
 
 CACHE:
-#Build time: 1353685710
+#Build time: 1353686951
 
 board.js
 default24.css
@@ -173,5 +173,4 @@ jquery.animate-enhanced.js
 jquery.js
 jquery.rotate.js
 levels.json
-manifest.appcache
 modernizr.touch.js
