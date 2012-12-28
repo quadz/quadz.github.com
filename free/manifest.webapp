@@ -1,11 +1,11 @@
 {
   "name": "Quadz",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "manifest_version": 2,
   "description": "Quadz - a unique puzzle game of colors and letters",
   "offline_enabled": true,
-  "icons": { "16": "quadz_app_16.png",
-             "128": "quadz_app_icon_96_padded_128.png"},
+  "icons": { "16": "/free/quadz_app_16.png",
+             "128": "/free/quadz_app_icon_96_padded_128.png"},
   "app": {
     "launch": {
       "local_path": "index.html"
