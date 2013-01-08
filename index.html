@@ -10,6 +10,18 @@
       .toolbutton {
           border-radius: 5%/20%;
       }
+
+      #issuesLink {
+          color: gray;
+      }
+
+      #issuesLink:visited {
+          color: lightgray;
+      }
+
+      td {
+          text-align: center;
+      }
     </style>
     <script type="text/javascript">
 
@@ -33,28 +45,37 @@
           <div  align="center">
             <table cellpadding="5px">
               <tr>
-                <td>
-                  <div style="padding: 10px;" class="toolButton"
-                  onclick="javascript:window.location='free/index.html'">Play
-                  Quadz Free</div>
+                <td colspan="2" style="padding-bottom: 20px;">
+                  <div style="padding: 10px; width: 50%;" class="toolButton"
+                  onclick="javascript:window.location='free/index.html'">Play Quadz Free</div>
                 </td>
+              </tr>
+              <tr>
                 <td>
-                  <div style="padding: 10px;" class="toolButton"
-                  onclick="javascript:window.location='https://itunes.apple.com/us/app/quadz/id578852677?mt=8'">
-                  Quadz in App Store</div>
+                   <a href="http://play.google.com/store/apps/details?id=to.x8.quadz">
+                     <img alt="Android app on Google Play"
+                          src="http://developer.android.com/images/brand/en_app_rgb_wo_60.png" />
+                   </a>
+                 </td>
+                <td>
+                  <a href="https://itunes.apple.com/us/app/quadz/id578852677?mt=8">
+                    <img alt="Quadz in App Store"
+                    src="Download_on_the_App_Store_Badge_US-UK_135x40_0801.svg"
+                         style="height: 60px"/>
+                  </a>
                 </td>
-                <td>
-                  <div style="padding: 10px;" class="toolButton"
-                  onclick="javascript:window.location='issues/index.html'">Report
-                  an Issue</div>
+              </tr>
+              <tr>
+                <td colspan="2">
+                    <a id="issuesLink" href="issues/index.html">Report an Issue</a>
                 </td>
               </tr>
             </table>
           </div>
 
-          <br>
-          <br>
-
+      </tr>
+      <tr>
+        <td>
 <!-- AddThis Button BEGIN -->
 <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=ra-50b249203930661b"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a>
 <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50b249203930661b"></script>
