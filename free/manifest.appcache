@@ -1,7 +1,7 @@
 CACHE MANIFEST
 
 CACHE:
-#Build time: 1366591708
+#Build time: 1368582195
 
 board.js
 default17.css
@@ -36,6 +36,8 @@ images/17/rock.png
 images/17/rright.png
 images/17/rup.png
 images/17/sky.png
+images/17/teleport_in.png
+images/17/teleport_out.png
 images/17/undo.png
 images/17/up.png
 images/17/yellow.png
@@ -62,6 +64,8 @@ images/24/rock.png
 images/24/rright.png
 images/24/rup.png
 images/24/sky.png
+images/24/teleport_in.png
+images/24/teleport_out.png
 images/24/undo.png
 images/24/up.png
 images/24/yellow.png
@@ -88,6 +92,8 @@ images/32/rock.png
 images/32/rright.png
 images/32/rup.png
 images/32/sky.png
+images/32/teleport_in.png
+images/32/teleport_out.png
 images/32/undo.png
 images/32/up.png
 images/32/yellow.png
@@ -114,6 +120,8 @@ images/34/rock.png
 images/34/rright.png
 images/34/rup.png
 images/34/sky.png
+images/34/teleport_in.png
+images/34/teleport_out.png
 images/34/undo.png
 images/34/up.png
 images/34/yellow.png
@@ -140,6 +148,8 @@ images/42/rock.png
 images/42/rright.png
 images/42/rup.png
 images/42/sky.png
+images/42/teleport_in.png
+images/42/teleport_out.png
 images/42/undo.png
 images/42/up.png
 images/42/yellow.png
@@ -166,6 +176,8 @@ images/58/rock.png
 images/58/rright.png
 images/58/rup.png
 images/58/sky.png
+images/58/teleport_in.png
+images/58/teleport_out.png
 images/58/undo.png
 images/58/up.png
 images/58/yellow.png
@@ -192,6 +204,8 @@ images/84/rock.png
 images/84/rright.png
 images/84/rup.png
 images/84/sky.png
+images/84/teleport_in.png
+images/84/teleport_out.png
 images/84/undo.png
 images/84/up.png
 images/84/yellow.png
