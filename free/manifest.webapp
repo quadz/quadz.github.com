@@ -1,7 +1,0 @@
-{
-  "name": "Quadz",
-  "version": "1.0.3",
-  "description": "Quadz - a unique puzzle game of colors and letters",
-  "icons": { "16": "/free/quadz_app_16.png",
-             "128": "/free/quadz_app_icon_96_padded_128.png"}
-}

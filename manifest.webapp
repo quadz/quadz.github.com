@@ -1,0 +1,12 @@
+{
+  "name": "Quadz",
+  "version": "1.0.4",
+  "description": "Quadz - a unique puzzle game of colors and letters",
+  "icons": {"32": "/quadz_app_icon_32.png",
+            "128": "/quadz_app_icon_128.png"},
+  "launch_path": "/index.html",
+  "developer": {
+      "name", "Igor Tkach",
+      "url": "https://github.com/itkach"
+  }
+}
